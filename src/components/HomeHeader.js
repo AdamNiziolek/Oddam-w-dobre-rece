@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import Navigation from './Navigation'
 
-export default function Header() {
+export default function HomeHeader() {
     return (
         <div className="header">
             <div className="header__login-buttons">

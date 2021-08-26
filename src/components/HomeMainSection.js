@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function HomeMainSection() {
     return (
-        <div className="home__main-section">
+        <div className="home__main-section" id="main-section">
             <div className="home__main-section__img"></div>
             <div className="home__main-section__content">
                 <h1>Zacznij pomagać! <br/> 

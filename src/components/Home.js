@@ -2,6 +2,7 @@ import React from 'react'
 import HomeHeader from './HomeHeader'
 import HomeMainSection from './HomeMainSection'
 import HomeThreeColumns from './HomeThreeColumns'
+import HomeEasySteps from './HomeEasySteps'
 
 export default function Home() {
     return (
@@ -9,6 +10,7 @@ export default function Home() {
             <HomeHeader/>
             <HomeMainSection/>
             <HomeThreeColumns/>
+            <HomeEasySteps/>
         </div>
     )
 }

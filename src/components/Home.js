@@ -5,6 +5,7 @@ import HomeThreeColumns from './HomeThreeColumns'
 import HomeEasySteps from './HomeEasySteps'
 import HomeAboutUs from './HomeAboutUs'
 import HomeWhoWeHelp from './HomeWhoWeHelp'
+import HomeContact from './HomeContact'
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <HomeEasySteps/>
             <HomeAboutUs/>
             <HomeWhoWeHelp/>
+            <HomeContact/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function HomeWhoWeHelpList({data, selected, currentPage, setCurrentPage}) {
     const linesPerPage = 3;

@@ -7,7 +7,7 @@ export default function HomeWhoWeHelp() {
     const [classO, setClassO] = useState("who-we-help__buttons__element");
     const [classL, setClassL] = useState("who-we-help__buttons__element");    
     const [currentPage, setCurrentPage] = useState(1);
-    const [list, setList] = useState({
+    const list = {
         fundations: [
             {
                 title: 'Fundacja "Dbam o Zdrowie"',
@@ -106,7 +106,7 @@ export default function HomeWhoWeHelp() {
                 staff: 'ubrania, jedzenie, ciepłe koce'
             }
         ]
-    });
+    };
 
     if (selected === "fundations" && classF !== "who-we-help__buttons__element border") {
         setClassF("who-we-help__buttons__element border");

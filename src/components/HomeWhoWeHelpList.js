@@ -41,7 +41,7 @@ export default function HomeWhoWeHelpList({data, selected, currentPage, setCurre
 
     const renderPageNumbers = pageNumbers.map(number => {
         let className;
-        if(number == currentPage) {
+        if(Number(number) === Number(currentPage)) {
             className = "who-we-help__content__page__number border";
         } else {
             className = "who-we-help__content__page__number";

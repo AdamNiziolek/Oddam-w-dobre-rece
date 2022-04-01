@@ -146,11 +146,11 @@ export default function HomeContact() {
                     <span>Copyright by Coders Lab</span>
                     <div className="contact__container__footer__links">
                         <a href="https://www.facebook.com/CodersLabSzkolaIT/" 
-                            target="_blank" rel="noopener"
-                        />
+                            target="_blank" rel="noreferrer"
+                        > </a>
                         <a href="https://www.instagram.com/coders.lab" 
-                            target="_blank" rel="noopener"
-                        />
+                            target="_blank" rel="noreferrer"
+                        > </a>
                     </div>
                 </div>
             </div>

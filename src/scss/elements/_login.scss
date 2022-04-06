@@ -57,11 +57,25 @@
                         border-bottom: 1px solid #707070;
                         background-color: $color-transparent;
                     }
+
+                    .border-error {
+                        border-color: red;
+                    }
+
+                    .form-error-alert {                            
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: red;
+                    }
+
+                    .form-no-error {
+                        visibility: hidden;
+                    }
                 }
             }
 
             &__buttons {
-                margin-top: 40px;
+                margin-top: 20px;
                 width: 180%;
                 display: flex;
                 justify-content: space-between;

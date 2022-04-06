@@ -7,8 +7,8 @@ import {
 import Home from "./components/Home";
 import Form from "./components/Form";
 import Login from "./components/Login";
-import Register from "./components/Register";
-import Logoutn from "./components/Logoutn";
+import Registration from "./components/Registration";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
         <Route exact path="/" component={Home}/>
         <Route path="/oddaj-rzeczy" component={Form}/>
         <Route path="/logowanie" component={Login}/>
-        <Route path="/rejestracja" component={Register}/>
-        <Route path="/wylogowano" component={Logoutn}/>        
+        <Route path="/rejestracja" component={Registration}/>
+        <Route path="/wylogowano" component={Logout}/>        
       </Switch>
     </Router>
   );

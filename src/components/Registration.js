@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import HomeHeader from './HomeHeader'
 
-export default function Login() {
+export default function Registration() {
     const [form, setForm] = useState({ email:"", password:"", password2:""});
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);

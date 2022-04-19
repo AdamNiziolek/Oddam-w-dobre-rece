@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { useAuth } from '../contexts/AuthContext';
+import { Link, useHistory } from "react-router-dom"
 import HomeHeader from './HomeHeader'
 
 export default function Registration() {
@@ -13,6 +14,10 @@ export default function Registration() {
     const [passwordErrorClass, setPasswordErrorClass] = useState("form-error-alert form-no-error");
     const [password2InputClass, setPassword2InputClass] = useState("");
     const [password2ErrorClass, setPassword2ErrorClass] = useState("form-error-alert form-no-error");
+    const { signup } = useAuth();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
     
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -34,7 +39,7 @@ export default function Registration() {
         return String(password).length>=6;
     };
 
-    const handleSubmit = (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
         
         if (validateEmail(form.email)) {
@@ -50,9 +55,24 @@ export default function Registration() {
         }
 
         if (form.password2 === form.password) {
+            setError('');              
             if (password2Error === true) setPassword2Error(false);
             if (emailError !== true && passwordError !== true) {
-                setForm({ email:"", password:"", password2:"" });
+                try{      
+                    setLoading(true);
+                    await signup(form.email, form.password);
+                    history.push("/");
+                    setForm({ email:"", password:"", password2:"" });
+                } catch {
+                    setError('Rejestracja nieudana!');
+                    console.log(error);
+                    setForm(prevState => ({
+                        ...prevState,
+                        password: '',
+                        password2: ''
+                    }));
+                }
+                setLoading(false); 
             }
         } else {
             if (password2Error !== true) setPassword2Error(true);
@@ -109,7 +129,8 @@ export default function Registration() {
                             <input type="password" name="password2" class={password2InputClass}
                                 value={form.password2} onChange={handleChange}
                             />  
-                            <div className={password2ErrorClass}>Podane hasła muszą być takie same!</div>                          
+                            <div className={password2ErrorClass}>Podane hasła muszą być takie same!</div>    
+                            {error && <div className="form-error-alert center">{error}</div>}                                        
                         </label>
                     </div>
                     <div className="login__content__form__buttons">
@@ -117,7 +138,7 @@ export default function Registration() {
                             Zaloguj się
                         </Link>
                         <div className="login__content__form__buttons__element"
-                            onClick={handleSubmit}>
+                            onClick={handleSubmit} disabled={loading}>
                             Załóż konto
                         </div>
                     </div>                    

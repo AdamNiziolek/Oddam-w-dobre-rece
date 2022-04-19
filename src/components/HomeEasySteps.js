@@ -34,7 +34,7 @@ export default function HomeEasySteps() {
                 />
             </div>
             <div className="easy-steps__button-section">
-                <Link to="/logowanie" 
+                <Link to="/oddaj-rzeczy" 
                     className="easy-steps__button-section__link">
                     Oddaj <br/> rzeczy
                 </Link>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
+import { useAuth } from '../contexts/AuthContext'
 import HomeHeader from './HomeHeader'
 
 export default function Login() {
@@ -10,6 +11,10 @@ export default function Login() {
     const [emailErrorClass, setEmailErrorClass] = useState("form-error-alert form-no-error");
     const [passwordInputClass, setPasswordInputClass] = useState("");
     const [passwordErrorClass, setPasswordErrorClass] = useState("form-error-alert form-no-error");
+    const { login } = useAuth();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
     
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -31,7 +36,7 @@ export default function Login() {
         return String(password).length>=6;
     };
 
-    const handleSubmit = (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
         
         if (validateEmail(form.email)) {
@@ -43,9 +48,24 @@ export default function Login() {
         if (validatePassword(form.password)) {
             setPasswordError(false);
             if (emailError !== true) {
-                setForm({ email:"", password:"" });
+                try{      
+                    setError('');              
+                    setLoading(true);
+                    await login(form.email, form.password);
+                    history.push("/");
+                    setForm({ email:"", password:"" });
+                } catch {
+                    setError('Hasło nieprawidłowe!');
+                    console.log(error);
+                    setForm(prevState => ({
+                        ...prevState,
+                        password: ''
+                    }));
+                }
+                setLoading(false); 
             }            
         } else {
+            setError('');
             if (passwordError !== true) setPasswordError(true);
         }
     } 
@@ -70,7 +90,7 @@ export default function Login() {
             <HomeHeader/>
             <div className='login__content'>
                 <h1>Zaloguj się</h1> 
-                <div className="decoration"/>
+                <div className="decoration"/>                
                 <form className="login__content__form" onSubmit={handleSubmit}>
                     <div className="login__content__form__data">
                         <label>Email
@@ -85,7 +105,8 @@ export default function Login() {
                             <input type="password" name="password" class={passwordInputClass}
                                 value={form.password} onChange={handleChange}
                             />  
-                            <div className={passwordErrorClass}>Podane hasło jest za krótkie!</div>                          
+                            <div className={passwordErrorClass}>Podane hasło jest za krótkie!</div>        
+                            {error && <div className="form-error-alert center">{error}</div>}                  
                         </label>
                     </div>
                     <div className="login__content__form__buttons">
@@ -93,7 +114,7 @@ export default function Login() {
                             Załóż konto
                         </Link>
                         <div className="login__content__form__buttons__element"
-                            onClick={handleSubmit}>
+                            onClick={handleSubmit} disabled={loading}>
                             Zaloguj się
                         </div>
                     </div>                    

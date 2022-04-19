@@ -11,11 +11,11 @@ export default function HomeMainSection() {
                 </h1>
                 <div className="decoration"></div>
                 <div className="home__main-section__content__buttons">
-                    <Link to="/logowanie" 
+                    <Link to="/oddaj-rzeczy" 
                         className="home__main-section__content__buttons__link">
                         Oddaj <br/> rzeczy
                     </Link>
-                    <Link to="/logowanie" 
+                    <Link to="/oddaj-rzeczy" 
                         className="home__main-section__content__buttons__link">
                         Zorganizuj <br/> zbiórkę
                     </Link>

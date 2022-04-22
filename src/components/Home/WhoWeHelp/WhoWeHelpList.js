@@ -1,16 +1,17 @@
 import React from 'react'
 import classNames from 'classnames'
+import text from './config'
 
 export default function WhoWeHelpList({data, selected, currentPage, setCurrentPage}) {
     const linesPerPage = 3;
 
-    let paragraph; 
+    let paragraph;
     if (selected === 'fundations') {
-        paragraph = 'W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.';
+        paragraph = text('Fundacji');
     } else if (selected === 'organizations') {
-        paragraph = 'W naszej bazie znajdziesz listę zweryfikowanych Organizacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.';      
+        paragraph = text('Organizacji');      
     } else {
-        paragraph = 'W naszej bazie znajdziesz listę zweryfikowanych lokalnych zbiórek, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.';        
+        paragraph = text('lokalnych zbiórek');     
     }
     
     const indexOfLastLine = currentPage * linesPerPage; //6
@@ -18,7 +19,7 @@ export default function WhoWeHelpList({data, selected, currentPage, setCurrentPa
     const currentLine = data.slice(indexOfFirstLine, indexOfLastLine);
 
     const renderLines = currentLine.map((data, index) => {
-        let {title, subtitle, staff} = data;
+        const {title, subtitle, staff} = data;
         return (
             <div className="who-we-help__content__line" key={index}>
                 <div className="who-we-help__content__line__name">

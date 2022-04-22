@@ -1,6 +1,6 @@
-import {contactAPI as API}  from '../config/configuration'
+import { contactAPI as API }  from '../config/configuration'
 
-const validationFetch = (form) => {
+const contactFetch = (form) => {
     return (
         fetch(`${API}`, {
             method: "POST",
@@ -11,4 +11,4 @@ const validationFetch = (form) => {
         })
     )    
 }
-export default validationFetch;
+export default contactFetch;

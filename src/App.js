@@ -4,11 +4,11 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Home from "./components/Home";
-import Form from "./components/Form";
-import Login from "./components/Login";
-import Registration from "./components/Registration";
-import Logout from "./components/Logout";
+import Home from "./components/Home/Home/Home";
+import Form from "./components/Form/Form";
+import Login from "./components/Login/Login";
+import Registration from "./components/Login/Registration";
+import Logout from "./components/Logout/Logout";
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 

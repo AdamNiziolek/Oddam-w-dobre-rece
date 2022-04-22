@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const API = "https://fer-api.coderslab.pl/v1/portfolio/contact";
+import validationFetch from '../../../utils/contactFetch'
 
 export default function Contact() {
     const [form, setForm] = useState({ name:"", email:"", message:""});
@@ -25,13 +25,7 @@ export default function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault();       
-        fetch(`${API}`, {
-        method: "POST",
-        body: JSON.stringify(form),
-        headers: {
-            "Content-Type": "application/json"
-        }
-        })
+        validationFetch(form)
         .then(response => response.json())
         .then(status => {
             console.log(status, messageError);

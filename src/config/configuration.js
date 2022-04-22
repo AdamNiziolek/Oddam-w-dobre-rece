@@ -7,4 +7,5 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID
 };
 
+export const contactAPI = "https://fer-api.coderslab.pl/v1/portfolio/contact";
 export default firebaseConfig;

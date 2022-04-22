@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default function WhoWeHelpList({data, selected, currentPage, setCurrentPage}) {
     const linesPerPage = 3;
@@ -40,12 +41,10 @@ export default function WhoWeHelpList({data, selected, currentPage, setCurrentPa
     }
 
     const renderPageNumbers = pageNumbers.map(number => {
-        let className;
-        if(Number(number) === Number(currentPage)) {
-            className = "who-we-help__content__page__number border";
-        } else {
-            className = "who-we-help__content__page__number";
-        }
+        const className = classNames({
+            "who-we-help__content__page__number": true,
+            "border": Number(number) === Number(currentPage)
+        });
 
         if (pageNumbers.length > 1) {
             return (

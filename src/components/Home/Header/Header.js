@@ -21,21 +21,24 @@ export default function Header() {
     return (
         <div className="header">            
             <div className="header__login-buttons">
-                { currentUser && <div className="header__login-buttons__greeting">Cześć {currentUser.email}!</div> }
-                { currentUser && <Link to="/oddaj-rzeczy" className="header__login-buttons__link header__login-buttons__login">
-                    Oddaj rzeczy
-                </Link>}
-                { currentUser && 
-                <Link to="/wylogowano" onClick={handleLogout}
-                    className="header__login-buttons__link header__login-buttons__login">
-                    Wyloguj
-                </Link> }
-                {!currentUser && <Link to="/logowanie" className="header__login-buttons__link header__login-buttons__login">
-                    Zaloguj
-                </Link>}
-                {!currentUser && <Link to="/rejestracja" className="header__login-buttons__link header__login-buttons__register">
-                    Załóż konto
-                </Link>}
+                { currentUser && <>
+                    <div className="header__login-buttons__greeting">Cześć {currentUser.email}!</div>
+                    <Link to="/oddaj-rzeczy" className="header__login-buttons__link header__login-buttons__login">
+                        Oddaj rzeczy
+                    </Link>
+                    <Link to="/wylogowano" onClick={handleLogout}
+                        className="header__login-buttons__link header__login-buttons__login">
+                        Wyloguj
+                    </Link>
+                </> }
+                { !currentUser && <>
+                    <Link to="/logowanie" className="header__login-buttons__link header__login-buttons__login">
+                        Zaloguj
+                    </Link>
+                    <Link to="/rejestracja" className="header__login-buttons__link header__login-buttons__register">
+                        Załóż konto
+                    </Link>
+                </> }
             </div>
             <Navigation/>
         </div>

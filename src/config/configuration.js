@@ -8,4 +8,6 @@ const firebaseConfig = {
 };
 
 export const contactAPI = "https://fer-api.coderslab.pl/v1/portfolio/contact";
+export const facebookLink = "https://www.facebook.com/CodersLabSzkolaIT/";
+export const instagramLink = "https://www.instagram.com/coders.lab";
 export default firebaseConfig;

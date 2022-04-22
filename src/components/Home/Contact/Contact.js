@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import contactFetch from '../../../utils/contactFetch'
 import classNames from 'classnames'
+import contactFetch from '../../../utils/contactFetch'
+import { facebookLink, instagramLink }  from '../../../config/configuration'
+
 
 export default function Contact() {
     const [form, setForm] = useState({ name:"", email:"", message:""});
@@ -110,12 +112,8 @@ export default function Contact() {
                 <div className="contact__container__footer">
                     <span>Copyright by Coders Lab</span>
                     <div className="contact__container__footer__links">
-                        <a href="https://www.facebook.com/CodersLabSzkolaIT/" 
-                            target="_blank" rel="noreferrer"
-                        > </a>
-                        <a href="https://www.instagram.com/coders.lab" 
-                            target="_blank" rel="noreferrer"
-                        > </a>
+                        <a href={facebookLink} target="_blank" rel="noreferrer"> </a>
+                        <a href={instagramLink} target="_blank" rel="noreferrer"> </a>
                     </div>
                 </div>
             </div>

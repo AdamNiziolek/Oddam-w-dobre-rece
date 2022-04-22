@@ -37,8 +37,8 @@ export default function WhoWeHelpList({data, selected, currentPage, setCurrentPa
         pageNumbers.push(i);
     }
 
-    const handleClick = (e) => {
-        setCurrentPage(e.target.id);
+    const handleClick = (event) => {
+        setCurrentPage(event.target.id);
     }
 
     const renderPageNumbers = pageNumbers.map(number => {

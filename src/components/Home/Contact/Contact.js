@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
+import { getInputClassNames, getErrorClassNames } from '../../../utils/getClassNames'
 import contactFetch from '../../../utils/contactFetch'
 import { facebookLink, instagramLink }  from '../../../config/configuration'
 
@@ -10,20 +11,6 @@ export default function Contact() {
     const [emailError, setEmailError] = useState(false);
     const [messageError, setMessageError] = useState(false);
     const [formSend, setFormSend] = useState(false);
-
-    function getInputClassNames(error) {
-        return classNames({
-            "border-error": error
-        });
-    }
-
-    function getErrorClassNames(error) {
-        return classNames({
-            "form-error-alert": true,
-            "form-no-error": !error
-        });
-    }
-
     const nameInputClass = getInputClassNames(nameError);
     const nameErrorClass = getErrorClassNames(nameError);
     const emailInputClass = getInputClassNames(emailError);

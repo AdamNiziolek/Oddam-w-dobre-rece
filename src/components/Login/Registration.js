@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from "react-router-dom"
+import { getInputClassNames, getErrorClassNames } from '../../utils/getClassNames'
 import Header from '../Home/Header/Header'
 
 export default function Registration() {
@@ -8,12 +9,12 @@ export default function Registration() {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [password2Error, setPassword2Error] = useState(false);
-    const [emailInputClass, setEmailInputClass] = useState("");
-    const [emailErrorClass, setEmailErrorClass] = useState("form-error-alert form-no-error");
-    const [passwordInputClass, setPasswordInputClass] = useState("");
-    const [passwordErrorClass, setPasswordErrorClass] = useState("form-error-alert form-no-error");
-    const [password2InputClass, setPassword2InputClass] = useState("");
-    const [password2ErrorClass, setPassword2ErrorClass] = useState("form-error-alert form-no-error");
+    const emailInputClass = getInputClassNames(emailError);
+    const emailErrorClass = getErrorClassNames(emailError);
+    const passwordInputClass = getInputClassNames(passwordError);
+    const passwordErrorClass = getErrorClassNames(passwordError);
+    const password2InputClass = getInputClassNames(password2Error);
+    const password2ErrorClass = getErrorClassNames(password2Error);
     const { signup } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -43,21 +44,21 @@ export default function Registration() {
         event.preventDefault();
         
         if (validateEmail(form.email)) {
-            if (emailError === true) setEmailError(false);
+            if (emailError) setEmailError(false);
         } else {
-            if (emailError !== true) setEmailError(true);
+            if (!emailError) setEmailError(true);
         } 
 
         if (validatePassword(form.password)) {
-            if (passwordError === true) setPasswordError(false);
+            if (passwordError) setPasswordError(false);
         } else {
-            if (passwordError !== true) setPasswordError(true);
+            if (!passwordError) setPasswordError(true);
         }
 
         if (form.password2 === form.password) {
             setError('');              
-            if (password2Error === true) setPassword2Error(false);
-            if (emailError !== true && passwordError !== true) {
+            if (password2Error) setPassword2Error(false);
+            if (!emailError && !passwordError) {
                 try{      
                     setLoading(true);
                     await signup(form.email, form.password);
@@ -75,31 +76,9 @@ export default function Registration() {
                 setLoading(false); 
             }
         } else {
-            if (password2Error !== true) setPassword2Error(true);
+            if (!password2Error) setPassword2Error(true);
         }
     } 
-
-    if (emailError === true && emailInputClass !== "border-error") {
-        setEmailInputClass("border-error");
-        setEmailErrorClass("form-error-alert");
-    } else if (emailError !== true && emailInputClass === "border-error"){
-        setEmailInputClass("");
-        setEmailErrorClass("form-error-alert form-no-error");
-    }
-    if (passwordError === true && passwordInputClass !== "border-error") {
-        setPasswordInputClass("border-error");
-        setPasswordErrorClass("form-error-alert");
-    } else if (passwordError !== true && passwordInputClass === "border-error"){
-        setPasswordInputClass("");
-        setPasswordErrorClass("form-error-alert form-no-error");
-    }
-    if (password2Error === true && password2InputClass !== "border-error") {
-        setPassword2InputClass("border-error");
-        setPassword2ErrorClass("form-error-alert");
-    } else if (password2Error !== true && password2InputClass === "border-error"){
-        setPassword2InputClass("");
-        setPassword2ErrorClass("form-error-alert form-no-error");
-    }
 
     return (
         <div className="login">

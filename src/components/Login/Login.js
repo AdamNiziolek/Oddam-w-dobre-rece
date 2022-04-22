@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from "react-router-dom"
+import { getInputClassNames, getErrorClassNames } from '../../utils/getClassNames'
 import { useAuth } from '../../contexts/AuthContext'
 import Header from '../Home/Header/Header'
 
@@ -7,10 +8,10 @@ export default function Login() {
     const [form, setForm] = useState({ email:"", password:""});
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-    const [emailInputClass, setEmailInputClass] = useState("");
-    const [emailErrorClass, setEmailErrorClass] = useState("form-error-alert form-no-error");
-    const [passwordInputClass, setPasswordInputClass] = useState("");
-    const [passwordErrorClass, setPasswordErrorClass] = useState("form-error-alert form-no-error");
+    const emailInputClass = getInputClassNames(emailError);
+    const emailErrorClass = getErrorClassNames(emailError);
+    const passwordInputClass = getInputClassNames(passwordError);
+    const passwordErrorClass = getErrorClassNames(passwordError);
     const { login } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -42,12 +43,12 @@ export default function Login() {
         if (validateEmail(form.email)) {
             setEmailError(false);
         } else {
-            if (emailError !== true) setEmailError(true);
+            if (!emailError) setEmailError(true);
         } 
 
         if (validatePassword(form.password)) {
             setPasswordError(false);
-            if (emailError !== true) {
+            if (!emailError) {
                 try{      
                     setError('');              
                     setLoading(true);
@@ -66,24 +67,9 @@ export default function Login() {
             }            
         } else {
             setError('');
-            if (passwordError !== true) setPasswordError(true);
+            if (!passwordError) setPasswordError(true);
         }
     } 
-
-    if (emailError === true && emailInputClass !== "border-error") {
-        setEmailInputClass("border-error");
-        setEmailErrorClass("form-error-alert");
-    } else if (emailError !== true && emailInputClass === "border-error"){
-        setEmailInputClass("");
-        setEmailErrorClass("form-error-alert form-no-error");
-    }
-    if (passwordError === true && passwordInputClass !== "border-error") {
-        setPasswordInputClass("border-error");
-        setPasswordErrorClass("form-error-alert");
-    } else if (passwordError !== true && passwordInputClass === "border-error"){
-        setPasswordInputClass("");
-        setPasswordErrorClass("form-error-alert form-no-error");
-    }
 
     return (
         <div className="login">

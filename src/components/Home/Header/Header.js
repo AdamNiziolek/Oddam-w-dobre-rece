@@ -8,8 +8,8 @@ export default function Header() {
     const { logout } = useAuth();
     const history = useHistory();
 
-    async function handleLogout(e) {
-        e.preventDefault();
+    async function handleLogout(event) {
+        event.preventDefault();
         try {
             await logout();
             history.push('/wylogowano');

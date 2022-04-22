@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import Header from '../Home/Header/Header'
 
-export default function Logout() {
-    
+export default function Logout() {    
     return (
         <div className="logout">
             <Header/>

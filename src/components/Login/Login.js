@@ -16,8 +16,8 @@ export default function Login() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
     
-    const handleChange = (e) => {
-        const {name, value} = e.target;
+    const handleChange = (event) => {
+        const {name, value} = event.target;
         setForm(prevState => ({
                 ...prevState,
                 [name]: value
@@ -36,8 +36,8 @@ export default function Login() {
         return String(password).length>=6;
     };
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+    async function handleSubmit(event) {
+        event.preventDefault();
         
         if (validateEmail(form.email)) {
             setEmailError(false);

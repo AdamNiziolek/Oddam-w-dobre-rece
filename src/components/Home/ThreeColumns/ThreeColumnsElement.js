@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-export default function ThreeColumnsElement({number, title, text}) {
+export default function ThreeColumnsElement({ number, title, text }) {
     return (
         <div className="three-columns__element">
             <h2>{number}</h2>

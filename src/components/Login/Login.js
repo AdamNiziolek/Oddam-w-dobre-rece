@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Link, useHistory } from "react-router-dom"
-import { getInputClassNames, getErrorClassNames } from '../../utils/getClassNames'
-import { useAuth } from '../../contexts/AuthContext'
-import Header from '../Home/Header/Header'
-import { validatePassword, validateEmail, resetPassword} from './utils'
+import React, { useState } from 'react';
+import { Link, useHistory } from "react-router-dom";
+import { getInputClassNames, getErrorClassNames } from '../../utils/getClassNames';
+import { useAuth } from '../../contexts/AuthContext';
+import Header from '../Home/Header/Header';
+import { validatePassword, validateEmail, resetPassword} from './utils';
 
 export default function Login() {
     const [form, setForm] = useState({ email:"", password:""});

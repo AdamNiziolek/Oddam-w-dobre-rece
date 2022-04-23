@@ -15,7 +15,7 @@ export const resetPassword = (setForm) => {
     ...prevState,
     password: ''
   }));
-}
+};
 
 export const resetPasswords = (setForm) => {
   setForm(prevState => ({
@@ -23,4 +23,4 @@ export const resetPasswords = (setForm) => {
     password: '',
     password2: ''
   }));
-}
+};

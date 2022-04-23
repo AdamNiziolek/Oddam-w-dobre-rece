@@ -1,14 +1,15 @@
-import React from 'react'
-import classNames from 'classnames'
-import text from './config'
+import React from 'react';
+import classNames from 'classnames';
+import text, { POSSIBLE_TYPES_OF_HELP } from './config';
 
 export default function WhoWeHelpList({data, selected, currentPage, setCurrentPage}) {
+    const { FUNDATIONS, ORGANIZATIONS } = POSSIBLE_TYPES_OF_HELP;
     const linesPerPage = 3;
 
     let paragraph;
-    if (selected === 'fundations') {
+    if (selected === FUNDATIONS) {
         paragraph = text('Fundacji');
-    } else if (selected === 'organizations') {
+    } else if (selected === ORGANIZATIONS) {
         paragraph = text('Organizacji');      
     } else {
         paragraph = text('lokalnych zbiórek');     

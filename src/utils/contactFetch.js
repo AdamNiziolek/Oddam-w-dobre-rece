@@ -1,4 +1,4 @@
-import { contactAPI as API }  from '../config/configuration'
+import { contactAPI as API }  from '../config/configuration';
 
 const contactFetch = (form) => {
     return (
@@ -10,5 +10,5 @@ const contactFetch = (form) => {
             }
         })
     )    
-}
+};
 export default contactFetch;

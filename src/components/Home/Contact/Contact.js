@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import classNames from 'classnames'
-import { getInputClassNames, getErrorClassNames } from '../../../utils/getClassNames'
-import contactFetch from '../../../utils/contactFetch'
-import { facebookLink, instagramLink }  from '../../../config/configuration'
-
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { getInputClassNames, getErrorClassNames } from '../../../utils/getClassNames';
+import contactFetch from '../../../utils/contactFetch';
+import { facebookLink, instagramLink }  from '../../../config/configuration';
 
 export default function Contact() {
-    const [form, setForm] = useState({ name:"", email:"", message:""});
+    const [form, setForm] = useState({ name: "", email: "", message: ""});
     const [nameError, setNameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [messageError, setMessageError] = useState(false);
@@ -30,17 +29,17 @@ export default function Contact() {
         }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         setNameError(false);
         setEmailError(false);
-        setMessageError(false);       
-        contactFetch(form)
-        .then(response => response.json())
-        .then(status => {
+        setMessageError(false); 
+        try {
+            const response = await contactFetch(form);
+            const status = await response.json();
             if (status.status === "success") {                
                 setFormSend(true);
-                setForm({ name:"", email:"", message:"" });
+                setForm({ name: "", email: "", message: "" });
             } else {
                 setFormSend(false);
                 status.errors.forEach(element => {
@@ -52,11 +51,10 @@ export default function Contact() {
                         setMessageError(true);
                     }
                 });
-            }        
-        })
-        .catch(error => {
+            }
+        } catch (error) {
             console.log(error);
-        });
+        }
     };
 
     return (
@@ -81,7 +79,6 @@ export default function Contact() {
                                 <div className={emailErrorClass}>Podany email jest nieprawidłowy!</div>
                             </label>
                         </div>
-                        
                         <div className="contact__container__content__form__message">
                             <label>Wpisz swoją wiadomość
                                 <textarea name="message" class={messageInputClass}

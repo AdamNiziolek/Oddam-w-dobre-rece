@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Link, useHistory } from "react-router-dom";
-import Navigation from './Navigation'
-import { useAuth } from '../../../contexts/AuthContext'
+import Navigation from './Navigation';
+import { useAuth } from '../../../contexts/AuthContext';
 
 export default function Header() {
     const { currentUser } = useAuth();
@@ -16,7 +16,7 @@ export default function Header() {
         } catch (err) {
             console.log(err);
         }        
-    } 
+    }
 
     return (
         <div className="header">            

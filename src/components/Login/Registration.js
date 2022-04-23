@@ -3,6 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from "react-router-dom"
 import { getInputClassNames, getErrorClassNames } from '../../utils/getClassNames'
 import Header from '../Home/Header/Header'
+import { validatePassword, validateEmail, resetPasswords } from './utils'
 
 export default function Registration() {
     const [form, setForm] = useState({ email:"", password:"", password2:""});
@@ -23,61 +24,48 @@ export default function Registration() {
     const handleChange = (event) => {
         const {name, value} = event.target;
         setForm(prevState => ({
-                ...prevState,
-                [name]: value
-            }));
-    };
-
-    const validateEmail = (email) => {
-        return String(email)
-          .toLowerCase()
-          .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          );
-    };
-
-    const validatePassword = (password) => {
-        return String(password).length>=6;
+            ...prevState,
+            [name]: value
+        }));
     };
 
     async function handleSubmit(event) {
         event.preventDefault();
+        setError('');
         
-        if (validateEmail(form.email)) {
-            if (emailError) setEmailError(false);
-        } else {
+        if (!validateEmail(form.email)) {
             if (!emailError) setEmailError(true);
+            resetPasswords(setForm);
+            return;
+        } else {
+            if (emailError) setEmailError(false);
         } 
 
-        if (validatePassword(form.password)) {
-            if (passwordError) setPasswordError(false);
-        } else {
+        if (!validatePassword(form.password)) {
             if (!passwordError) setPasswordError(true);
+            resetPasswords(setForm);
+            return;
+        } else {
+            if (passwordError) setPasswordError(false);
         }
 
-        if (form.password2 === form.password) {
-            setError('');              
-            if (password2Error) setPassword2Error(false);
-            if (!emailError && !passwordError) {
-                try{      
-                    setLoading(true);
-                    await signup(form.email, form.password);
-                    history.push("/");
-                    setForm({ email:"", password:"", password2:"" });
-                } catch {
-                    setError('Rejestracja nieudana!');
-                    console.log(error);
-                    setForm(prevState => ({
-                        ...prevState,
-                        password: '',
-                        password2: ''
-                    }));
-                }
-                setLoading(false); 
-            }
-        } else {
+        if (form.password2 !== form.password) {
             if (!password2Error) setPassword2Error(true);
+            resetPasswords(setForm);
+            return;
+        } else {
+            if (password2Error) setPassword2Error(false);
         }
+
+        try{      
+            setLoading(true);
+            await signup(form.email, form.password);
+            setLoading(false); 
+            history.push("/");
+        } catch {
+            setError('Rejestracja nieudana!');
+            resetPasswords(setForm);
+        }    
     } 
 
     return (
@@ -108,8 +96,8 @@ export default function Registration() {
                             <input type="password" name="password2" class={password2InputClass}
                                 value={form.password2} onChange={handleChange}
                             />  
-                            <div className={password2ErrorClass}>Podane hasła muszą być takie same!</div>    
-                            {error && <div className="form-error-alert center">{error}</div>}                                        
+                            { !error && <div className={password2ErrorClass}>Podane hasła muszą być takie same!</div> }  
+                            { error && <div className="form-error-alert">{error}</div> }                                        
                         </label>
                     </div>
                     <div className="login__content__form__buttons">

@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import { getInputClassNames, getErrorClassNames } from '../../utils/getClassNames'
 import { useAuth } from '../../contexts/AuthContext'
 import Header from '../Home/Header/Header'
+import { validatePassword, validateEmail, resetPassword} from './utils'
 
 export default function Login() {
     const [form, setForm] = useState({ email:"", password:""});
@@ -20,55 +21,39 @@ export default function Login() {
     const handleChange = (event) => {
         const {name, value} = event.target;
         setForm(prevState => ({
-                ...prevState,
-                [name]: value
-            }));
-    };
-
-    const validateEmail = (email) => {
-        return String(email)
-          .toLowerCase()
-          .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          );
-    };
-
-    const validatePassword = (password) => {
-        return String(password).length>=6;
+            ...prevState,
+            [name]: value
+        }));
     };
 
     async function handleSubmit(event) {
         event.preventDefault();
-        
-        if (validateEmail(form.email)) {
-            setEmailError(false);
-        } else {
+        setError('');
+
+        if (!validateEmail(form.email)) {
             if (!emailError) setEmailError(true);
+            resetPassword(setForm);
+            return;
+        } else {
+            if (emailError) setEmailError(false);
         } 
 
-        if (validatePassword(form.password)) {
-            setPasswordError(false);
-            if (!emailError) {
-                try{      
-                    setError('');              
-                    setLoading(true);
-                    await login(form.email, form.password);
-                    history.push("/");
-                    setForm({ email:"", password:"" });
-                } catch {
-                    setError('Hasło nieprawidłowe!');
-                    console.log(error);
-                    setForm(prevState => ({
-                        ...prevState,
-                        password: ''
-                    }));
-                }
-                setLoading(false); 
-            }            
-        } else {
-            setError('');
+        if (!validatePassword(form.password)) {
             if (!passwordError) setPasswordError(true);
+            return; 
+        } else {
+            if (passwordError) setPasswordError(false);
         }
+    
+        try {                          
+            setLoading(true);
+            await login(form.email, form.password);
+            setLoading(false);             
+            history.push("/");
+        } catch {
+            setError('Hasło nieprawidłowe!');
+            resetPassword(setForm);
+        }  
     } 
 
     return (
@@ -91,8 +76,8 @@ export default function Login() {
                             <input type="password" name="password" class={passwordInputClass}
                                 value={form.password} onChange={handleChange}
                             />  
-                            <div className={passwordErrorClass}>Podane hasło jest za krótkie!</div>        
-                            {error && <div className="form-error-alert center">{error}</div>}                  
+                            { !error && <div className={passwordErrorClass}>Podane hasło jest za krótkie!</div> }        
+                            { error && <div className="form-error-alert">{error}</div> }                  
                         </label>
                     </div>
                     <div className="login__content__form__buttons">

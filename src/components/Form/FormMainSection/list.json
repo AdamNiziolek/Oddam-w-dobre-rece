@@ -1,0 +1,20 @@
+{
+  "elements": [
+    {
+      "number": 1,
+      "text": "Wybierz rzeczy"
+    },
+    {
+      "number": 2,
+      "text": "Spakuj je \n w worki"
+    },
+    {
+      "number": 3,
+      "text": "Wybierz fundację"
+    },
+    {
+      "number": 4,
+      "text": "Zamów kuriera"
+    }
+  ]
+}

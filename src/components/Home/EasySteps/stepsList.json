@@ -1,28 +1,28 @@
 {
-    "steps": [
-        {
-            "icon": "1",
-            "key": 1,
-            "title": "Wybierz rzeczy",
-            "text": "ubrania, zabawki, sprzęt i inne"
-        },
-        {
-            "icon": "2",
-            "key": 2,
-            "title": "Spakuj je",
-            "text": "skorzystaj z worków na śmieci"
-        },
-        {
-            "icon": "3",
-            "key": 3,
-            "title": "Zdecyduj komu chcesz pomóc",
-            "text": "wybierz zaufane miejsce"
-        },
-        {
-            "icon": "4",
-            "key": 4,
-            "title": "Zamów kuriera",
-            "text": "kurier przyjedzie w dogodnym terminie"
-        }
-    ]
+   "steps": [
+      {
+         "icon": "1",
+         "key": 1,
+         "title": "Wybierz rzeczy",
+         "text": "ubrania, zabawki, sprzęt i inne"
+      },
+      {
+         "icon": "2",
+         "key": 2,
+         "title": "Spakuj je",
+         "text": "skorzystaj z worków na śmieci"
+      },
+      {
+         "icon": "3",
+         "key": 3,
+         "title": "Zdecyduj komu chcesz pomóc",
+         "text": "wybierz zaufane miejsce"
+      },
+      {
+         "icon": "4",
+         "key": 4,
+         "title": "Zamów kuriera",
+         "text": "kurier przyjedzie w dogodnym terminie"
+      }
+   ]
 }

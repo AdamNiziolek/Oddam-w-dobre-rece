@@ -1,24 +1,24 @@
 {
-    "links": [
-        {   
-            "to": "main-section",
-            "text": "Start"
-        },
-        {
-            "to": "easy-steps",
-            "text": "O co chodzi?"
-        },
-        {
-            "to": "about-us",
-            "text": "O nas"
-        },
-        {
-            "to": "who-we-help",
-            "text": "Fundacja i organizacje"
-        },
-        {
-            "to": "contact",
-            "text": "Kontakt"
-        }
-    ]
+   "links": [
+      {
+         "to": "main-section",
+         "text": "Start"
+      },
+      {
+         "to": "easy-steps",
+         "text": "O co chodzi?"
+      },
+      {
+         "to": "about-us",
+         "text": "O nas"
+      },
+      {
+         "to": "who-we-help",
+         "text": "Fundacja i organizacje"
+      },
+      {
+         "to": "contact",
+         "text": "Kontakt"
+      }
+   ]
 }

@@ -8,15 +8,15 @@ import WhoWeHelp from '../WhoWeHelp/WhoWeHelp';
 import Contact from '../Contact/Contact';
 
 export default function Home() {
-    return (
-        <div className="home">
-            <Header/>
-            <MainSection/>
-            <ThreeColumns/>
-            <EasySteps/>
-            <AboutUs/>
-            <WhoWeHelp/>
-            <Contact/>
-        </div>
-    )
+   return (
+      <div className="home">
+         <Header />
+         <MainSection />
+         <ThreeColumns />
+         <EasySteps />
+         <AboutUs />
+         <WhoWeHelp />
+         <Contact />
+      </div>
+   );
 }

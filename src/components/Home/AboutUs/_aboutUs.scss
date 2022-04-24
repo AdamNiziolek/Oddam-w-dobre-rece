@@ -1,52 +1,52 @@
 @import '../../../styles/settings/index';
 
 .about-us {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
 
-    &__content {
-        width: 50%;
-        height: 100%;
-        background-color: $color-bg-alt;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0 155px 0 155px;
+   &__content {
+      width: 50%;
+      height: 100%;
+      background-color: $color-bg-alt;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 155px 0 155px;
 
-        h2 {
-            text-align: center;
-            font-size: 38px;
-            line-height: 55px;
-            letter-spacing: -0.76px;
-            color: $color-text-base;
-            margin-bottom: 26px;
-        }
+      h2 {
+         text-align: center;
+         font-size: 38px;
+         line-height: 55px;
+         letter-spacing: -0.76px;
+         color: $color-text-base;
+         margin-bottom: 26px;
+      }
 
-        p {
-            text-align: center;
-            font-size: 30px;
-            line-height: 54px;
-            letter-spacing: -0.6px;
-            color: $color-text-base;
-            padding: 55px 0 40px 0;
-        }
+      p {
+         text-align: center;
+         font-size: 30px;
+         line-height: 54px;
+         letter-spacing: -0.6px;
+         color: $color-text-base;
+         padding: 55px 0 40px 0;
+      }
 
-        &__signature {
-            height: 149px;
-            width: 209px;
-            background-image: url('../../../assets/Signature.svg');
-            align-self: flex-end;
-        }
-    }
+      &__signature {
+         height: 149px;
+         width: 209px;
+         background-image: url('../../../assets/Signature.svg');
+         align-self: flex-end;
+      }
+   }
 
-    &__photo {
-        width: 50%;
-        height: 100%;
-        background-image: url("../../../assets/People.jpg");
-        background-size: cover;
-        background-position: -30px;
-        background-repeat: no-repeat;
-    }
+   &__photo {
+      width: 50%;
+      height: 100%;
+      background-image: url('../../../assets/People.jpg');
+      background-size: cover;
+      background-position: -30px;
+      background-repeat: no-repeat;
+   }
 }

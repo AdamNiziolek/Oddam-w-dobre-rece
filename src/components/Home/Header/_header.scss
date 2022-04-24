@@ -1,52 +1,52 @@
 @import '../../../styles/settings/index';
 
 .header {
-    position: absolute;
-    top: 50px;
-    left: 55vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
+   position: absolute;
+   top: 50px;
+   left: 55vw;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-end;
 
-    &__login-buttons {
-        margin-bottom: 35px;
-        margin-right: 20px;
-        display: flex;
-        font-size: 13px;
+   &__login-buttons {
+      margin-bottom: 35px;
+      margin-right: 20px;
+      display: flex;
+      font-size: 13px;
 
-        &__greeting {
-            color: $color-text-base;
-            padding: 10px;
-        }        
+      &__greeting {
+         color: $color-text-base;
+         padding: 10px;
+      }
 
-        &__link {            
-            outline: 0 solid $color-transparent;
-            transition: outline-color .3s ease-in-out;
-            color: $color-text-alt;
-            text-decoration: none;
-            padding: 10px;
+      &__link {
+         outline: 0 solid $color-transparent;
+         transition: outline-color 0.3s ease-in-out;
+         color: $color-text-alt;
+         text-decoration: none;
+         padding: 10px;
 
-            &:hover {
-                outline: 0.75px solid $color-border;
-                cursor: pointer;
-            }
-        }
-    }
+         &:hover {
+            outline: 0.75px solid $color-border;
+            cursor: pointer;
+         }
+      }
+   }
 
-    &__nav {
-        &__link {
-            font-size: 18px;
-            color: $color-text-base;
-            padding: 10px 20px;
-            margin-left: 20px;
-            outline: 0 solid $color-transparent;
-            transition: outline-color .3s ease-out;
+   &__nav {
+      &__link {
+         font-size: 18px;
+         color: $color-text-base;
+         padding: 10px 20px;
+         margin-left: 20px;
+         outline: 0 solid $color-transparent;
+         transition: outline-color 0.3s ease-out;
 
-            &:hover {
-                outline: 0.75px solid $color-text-base;
-                cursor: pointer;
-            }
-        }
-    }
+         &:hover {
+            outline: 0.75px solid $color-text-base;
+            cursor: pointer;
+         }
+      }
+   }
 }

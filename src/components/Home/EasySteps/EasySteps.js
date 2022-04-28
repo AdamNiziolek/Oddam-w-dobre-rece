@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { animateScroll as scroll } from 'react-scroll';
 import EasyStepsElement from './EasyStepsElement';
 import { steps } from './stepsList.json';
+
+const handleClick = () => {
+  scroll.scrollToTop();
+};
 
 export default function EasySteps() {
   return (
@@ -17,7 +22,7 @@ export default function EasySteps() {
         })}
       </div>
       <div className="easy-steps__button-section">
-        <Link to="/oddaj-rzeczy" className="easy-steps__button-section__link">
+        <Link to="/oddaj-rzeczy" className="easy-steps__button-section__link" onClick={handleClick}>
           Oddaj <br /> rzeczy
         </Link>
       </div>

@@ -1,0 +1,54 @@
+@import '../../../../../styles/settings/index';
+
+.form2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 300px;
+
+  label {
+    font-size: 22px;
+    color: $color-text-alt;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .custom-select {
+      margin-left: 30px;
+      position: relative;
+
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 250px;
+        height: 50px;
+        padding: 10px;
+        padding-left: 20px;
+        background-color: transparent;
+        font-size: 22px;
+        color: $color-text-alt;
+        border: 1px solid $color-text-alt;
+        cursor: pointer;
+
+        .hidden {
+          display: none;
+        }
+      }
+
+      .custom-arrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 50px;
+        width: 50px;
+        pointer-events: none;
+        background-image: url('../../../../../assets/Icon-Arrow-Down.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+}

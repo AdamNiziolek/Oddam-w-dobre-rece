@@ -1,0 +1,85 @@
+@import '../../../../../styles/settings/index';
+
+.form3 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+
+  .custom-select {
+    width: 250px;
+    position: relative;
+    margin-bottom: 20px;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 250px;
+      height: 50px;
+      padding: 10px;
+      padding-left: 20px;
+      background-color: transparent;
+      font-size: 22px;
+      color: $color-text-alt;
+      border: 1px solid $color-text-alt;
+      cursor: pointer;
+
+      .hidden {
+        display: none;
+      }
+    }
+
+    .custom-arrow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 50px;
+      width: 50px;
+      pointer-events: none;
+      background-image: url('../../../../../assets/Icon-Arrow-Down.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .checkboxes {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 40vw;
+
+    .custom-checkbox {
+      font-size: 22px;
+      color: $color-text-alt;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      height: 50px;
+      border: 1px solid $color-text-alt;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .input-checked {
+      background-color: $color-border;
+    }
+  }
+
+  .text-input {
+    width: 500px;
+    font-size: 18px;
+    color: $color-text-alt;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+}

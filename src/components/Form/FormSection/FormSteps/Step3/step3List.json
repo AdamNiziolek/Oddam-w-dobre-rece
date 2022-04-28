@@ -1,0 +1,18 @@
+{
+  "aims": [
+    "dzieciom",
+    "samotnym matkom",
+    "bezdomnym",
+    "niepełnosprawnym",
+    "osobom starszym"
+  ],
+  
+  "cities": [
+    "not-selected-city",
+    "Poznań",
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Katowice"
+  ]
+}

@@ -1,0 +1,45 @@
+@import '../../../styles/settings/index';
+
+.form-section {
+  width: 100vw;
+
+  &__bar {
+    height: 17vh;
+    width: 100vw;
+    padding: 0 150px;
+    background-color: $color-border;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    p {
+      display: block;
+      font-size: 24px;
+      line-height: 30px;
+      color: $color-text-alt;
+      font-weight: 400;
+
+      a {
+        text-decoration: none;
+        color: $color-text-alt;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    height: 83vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: right;
+    background-image: url('../../../assets/Background-Form.jpg');
+  }
+}

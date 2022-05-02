@@ -3,7 +3,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../../../../utils/firebase';
 import { useAuth } from '../../../../../contexts/AuthContext';
 import { ReactComponent as Icon1 } from '../../../../../assets/icon1.svg';
-import { ReactComponent as Icon4 } from '../../../../../assets/icon4.svg';
+import { ReactComponent as Icon2 } from '../../../../../assets/icon5.svg';
 import { aims } from '../Step3/step3List.json';
 
 export default function Step5({
@@ -117,7 +117,7 @@ export default function Step5({
           ))}
         </div>
         <div className="gift">
-          <Icon4 className="icon" />
+          <Icon2 className="icon" />
           <p>
             dla lokalizacji: {localization} {otherLocalization}
           </p>
